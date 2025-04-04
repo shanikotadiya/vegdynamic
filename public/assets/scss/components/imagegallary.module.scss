@@ -1,0 +1,111 @@
+// styles/Home.module.scss
+.swiper {
+  width: auto;
+  margin: 10vh 10vh 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiperImage {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;  // Smooth transition for zoom and opacity
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); // Semi-transparent background
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
+  transition: transform 1s ease;
+}
+
+// .zoomedImage:hover {
+//   transform: scale(1.2);  // Slight zoom in effect when hovering the modal image
+// }
+
+.zoomedImage {
+  width: 100%;
+  width: 120vh; // Control the zoomed image size
+  height: auto;
+  object-fit: contain;
+  transition: transform 1s ease; // Smooth zoom transition for modal
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(137, 169, 192);
+  }
+}
+
+// // Fade-in animation
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .modalContent {
+    width: 90%;  // Resize the modal for smaller screens
+    max-width: 600px;  // Limit the maximum width on smaller screens
+    padding: 10px;
+  }
+
+  .zoomedImage {
+    max-width: 100%;  // Ensure the image fits well inside the modal
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 95%;  // Further decrease modal width on very small screens
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .zoomedImage {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .closeButton {
+    font-size: 18px;  // Adjust close button size on small screens
+  }
+}

@@ -1,0 +1,48 @@
+@use '../utils' as *;
+
+$card-background: #ffffff;
+$card-border-color: #ddd;
+$card-border-radius: 10px;
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$logo-size: 60px;
+$card-padding: 20px;
+$card-hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+.card {
+  background-color: $card-background;
+  border: 1px solid $card-border-color;
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+  padding: $card-padding;
+  margin: $card-padding;
+  max-width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: $card-hover-shadow;
+  }
+
+  .logo {
+    width: $logo-size;
+    height: $logo-size;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures the image fits well within the circle */
+    transition: transform 0.3s ease;
+  }
+
+  .title {
+    font-size: 0.9rem;
+    text-align: start;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    text-align: start;
+    font-size: 0.7rem;
+    color: #666;
+  }
+}
