@@ -3,7 +3,7 @@ import SwiperCore, { Navigation, Autoplay, Pagination } from "swiper";
 import useGlobalContext from "../../hook/useGlobalContext";
 import VideoModal from "../common/VideoModal";
 
-const Testimonial = () => {
+const Testimonial = ({clientStory}) => {
   const { show, handleClose, handleShow } = useGlobalContext();
   const testimonialData = [
     {
@@ -84,7 +84,7 @@ const Testimonial = () => {
                         prevEl: ".bs-button-prev",
                       }}
                     >
-                      {testimonialData.map((testimonial) => {
+                      {clientStory.map((testimonial) => {
                         return (
                           <SwiperSlide key={testimonial.id}>
                             <div className="testimonial__item testimonial__item-3 swiper-slide">
@@ -97,11 +97,11 @@ const Testimonial = () => {
                               >
                                 <div className="client__content">
                                   <h5 className="client__name">
-                                    <a>{testimonial.name}</a>
+                                    <a>{testimonial.companyname}</a>
                                   </h5>
                                   <div className="client__designation">
                                     <p>
-                                      <a>{testimonial.work}</a>
+                                      <a>{testimonial.designation}</a>
                                     </p>
                                   </div>
                                 </div>

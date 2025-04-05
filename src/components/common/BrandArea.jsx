@@ -1,5 +1,5 @@
 
-const BrandArea = () => {
+const BrandArea = ({clientele}) => {
   const brandData = [
     {
       id: 1,
@@ -50,13 +50,20 @@ const BrandArea = () => {
     //   brandClass: "brand__image-item brand__image-item-3",
     // },
   ];
+
+  const updatedClientele = clientele.map((item, index) => ({
+    ...item,
+    brandClass: brandData[index]?.brandClass || "",
+  }));  
+  
+
   return (
     <div>
       <section className="brand__area-3 brand-border">
         <div className="container">
           <div className="brand__wrapper">
             <div className="row g-0">
-              {brandData.map((brand) => {
+              {updatedClientele.map((brand) => {
                 return (
                   <div
                     key={brand.id}
@@ -64,7 +71,7 @@ const BrandArea = () => {
                   >
                     <div className={`${brand.brandClass}`}>
                       <a href="#">
-                        <img src={`${brand.img}`} alt="" />
+                      <img src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${brand.filepath}`} alt="" />
                       </a>
                     </div>
                   </div>

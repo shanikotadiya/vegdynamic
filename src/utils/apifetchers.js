@@ -1,3 +1,4 @@
+const NEXT_API_URL = "http://vegadmin.cittaserver.com/api"
 
 async function fetchWithRevalidate(path) {
   const res = await fetch(`${process.env.NEXT_API_URL}/${path}`);

@@ -13,10 +13,15 @@ import SEO from "../components/seo";
 import BrandArea from "../components/common/BrandArea";
 import CtaArea from "../components/Home/CtaArea";
 import AnimatedIntro from "../components/common/AnimatedIntro";
-import { getLandingSlidesStaticProps } from "../utils/staticpropsfetcher";
-export const getStaticProps = getLandingSlidesStaticProps;
+import { getHomePage } from "../utils/staticpropsfetcher";
+export const getStaticProps = getHomePage;
 
-const Index = ({landingSlides}) => {
+const Index = ({landingSlides, clientele, workProcess, clientStory}) => {
+  
+ 
+fetch('http://vegadmin.cittaserver.com/api/servicedetails')
+.then((res) => res.json())
+.then((data) => console.log(data));
 
   const [loading, setLoading] = useState(true);
 
@@ -43,12 +48,12 @@ const Index = ({landingSlides}) => {
           <AboutUs />
           <ServicesArea />
           <SdBanner />
-          <BrandArea />
-          <Testimonial />
-          <ProcessArea />
+          <BrandArea clientele={clientele}/>
+          <Testimonial clientStory={clientStory}/>
+          <ProcessArea workProcess={workProcess}/>
           <CtaArea />
           <BlogArea />
-          <Footer />
+          <Footer/>
         </>
       )}
     </main>

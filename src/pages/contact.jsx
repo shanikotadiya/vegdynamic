@@ -5,9 +5,11 @@ import ContactArea from "../components/Contact/ContactArea";
 import ContactAreaTwo from "../components/Contact/ContactAreaTwo";
 import ContactMap from "../components/Contact/ContactMap";
 import SEO from "../components/seo";
+import { getHomePage } from "../utils/staticpropsfetcher";
 
+export const getStaticProps = getHomePage;
 
-const contact = () => {
+const contact = ({landingPageInfo}) => {
     return (
         <main>
             <SEO pageTitle="Contact" />

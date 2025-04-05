@@ -8,7 +8,6 @@ import SwiperCore, {
 
 
 const HeroSlider = ({landingSlides}) => {    
-  console.log("URL:", process.env.NEXT_PUBLIC_IMAGE_URL); // Should print the correct URL
 
   const sliderData = [
     {

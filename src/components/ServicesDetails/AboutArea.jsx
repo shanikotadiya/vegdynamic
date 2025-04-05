@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-const AboutArea = ({ selectedService }) => {
+const AboutArea = ({ selectedService, ServiceDetails }) => {
+  
   const validServices = selectedService.subDescription.filter(
     (service) => service.key.trim() != "" && service.content.trim() == ""
   );

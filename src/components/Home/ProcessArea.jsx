@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const ProcessArea = () => {
+const ProcessArea = ({workProcess}) => {
   const processData = [
     {
       id: 1,
@@ -54,17 +54,17 @@ const ProcessArea = () => {
             </div>
           </div>
           <div className="row mt-30">
-            {processData.map((process) => {
+            {workProcess.map((step) => {
               return (
-                <div key={process.id} className="col-xl-3 col-lg-3 col-md-6">
+                <div key={step.id} className="col-xl-3 col-lg-3 col-md-6">
                   <div className="process__item text-center mb-40">
                     <div className="process__content">
                       <div className="process__list-icon2 mb-20">
-                        <img src={`${process.icon}`} alt="icon" />
+                        <img src={`${ process.env.NEXT_PUBLIC_IMAGE_URL}${step.image}`} alt="" />
                       </div>
-                      <span>Step 0{`${process.id}`}</span>
+                      <span>Step 0{`${step.id}`}</span>
                       <h5 className="p-name mt-20">
-                        <Link href="#">{process.title}</Link>
+                        <Link href="#">{step.title}</Link>
                       </h5>
                       {/* <div className="process__more">
                         <Link href="/services-details">

@@ -34,10 +34,6 @@ export const getBlogsStaticProps = async () => ({
   revalidate: 10,
 });
 
-export const getClienteleStaticProps = async () => ({
-  props: { clientele: await fetchClientele() },
-  revalidate: 10,
-});
 
 export const getClientStoryStaticProps = async () => ({
   props: { clientStory: await fetchClientStory() },
@@ -49,9 +45,21 @@ export const getLandingPageInfoStaticProps = async () => ({
   revalidate: 10,
 });
 
-export async function getLandingSlidesStaticProps() {
+export async function getHomePage() {
+  const landingSlidesData = await fetchLandingSlides();
+  const clienteleData = await fetchClientele();         
+  const workProcessData = await fetchWorkProcess();
+const clientStory = await fetchClientStory();
+const landingPageInfo = await fetchLandingPageInfo();
+
   return {
-    props: {landingSlides: await fetchLandingSlides()},
+    props: {
+      landingSlides: landingSlidesData,
+      clientele: clienteleData.landingslide,
+      workProcess: workProcessData.workprocesses,
+      clientStory: clientStory.clientstories,
+      landingPageInfo: landingPageInfo.data
+    },
     revalidate: 10,
   };
 }

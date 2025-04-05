@@ -9,18 +9,21 @@ import ImageGallery from "../../components/Imagegallary/ImagegallaryArea";
 import BrandArea from "../../components/common/BrandArea";
 import TestimonialArea from "../../components/ServicesDetails/TestimonialArea";
 import { servicesData } from "../../data/servicesData";
+import { fetchClientele, fetchServiceDetails } from "../../utils/apifetchers";
 
-const ServiceDetailsPage = ({currentService}) => {
+const ServiceDetailsPage = ({currentService, clientele, ServiceDetails}) => {  
+  console.log(ServiceDetails);
+  
   
   return (
     <main>
       <SEO pageTitle={`Service Details - ${currentService.title}`} />
       <Header />
       <Breadcrumb title="Service Details" subtitle={currentService.breadcrumb_title} />
-      <AboutArea  selectedService={currentService}/>
+      <AboutArea  selectedService={currentService} ServiceDetails={ServiceDetails}/>
       <SmServices currentService={currentService}/>
       <ImageGallery  category={currentService.key}/>
-      <BrandArea />
+      <BrandArea clientele={clientele}/>
       <TestimonialArea />
       <BlogArea />
       <Footer />
@@ -43,8 +46,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   
   const currentService = servicesData.find((s) => s.key === params.slug) || null;  
+  const fetchedClientele = await fetchClientele();
+  const clientele = fetchedClientele.landingslide;
+  const ServiceDetails = await fetchServiceDetails()
+  
   return {
-    props: { currentService },
+    props: { currentService,clientele, ServiceDetails},
     revalidate: 10, // Regenerate at most every 10 seconds
   };
 }
